@@ -17,8 +17,8 @@
 #include "FirebaseESP8266.h"
 #include <ESP8266WiFi.h>
 
-#define RST_PIN         5                                         // Configurable, see typical pin layout above
-#define SS_PIN          4                                        // Configurable, see typical pin layout above
+#define RST_PIN         D3                                         // Configurable, see typical pin layout above
+#define SS_PIN          D4                                        // Configurable, see typical pin layout above
 #define FIREBASE_HOST "vendor-d7e9b.firebaseio.com"               // Firebase Host Name
 #define FIREBASE_AUTH "sThPXEnVlOE5zmPCEphGKGgCHnw6XFtLGxtBUb8V"  // Firebase Authorisation Key
 #define WIFI_SSID "Xperia"                                        // Name of the Hotspot to be connected

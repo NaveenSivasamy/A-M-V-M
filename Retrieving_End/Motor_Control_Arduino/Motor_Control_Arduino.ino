@@ -1,4 +1,4 @@
-#define DELAY 2000
+#define DELAY 7000
 
 void setup()
 {
@@ -21,28 +21,88 @@ void setup()
 
 void loop()
 {
-  int8_t Med[6],count=0;
+  int Med[6],count=0;
 
   //the following section is to serially read the No of medicines from the NodeMCU and store it in Med[6] array
   if(Serial.available())
   {
-  Serial.read();
-  while(count<6)
-  {
-    Med[count] = Serial.read();
-    count++;
-  }
+    Serial.read();
   }
   else
   {
-    return;    
+    return;
   }
-
+pos_1:
+  if(Serial.available())
+  {
+    Med[0] =Serial.read();
+  }
+  else
+  {
+    goto pos_1;
+  }
+pos_2:
+  if(Serial.available())
+  {
+    Med[1] =Serial.read();
+  }
+  else
+  {
+    goto pos_2;
+  }
+pos_3:
+  if(Serial.available())
+  {
+    Med[2] =Serial.read();
+  }
+  else
+  {
+    goto pos_3;
+  }
+pos_4:
+  if(Serial.available())
+  {
+    Med[3] =Serial.read();
+  }
+  else
+  {
+    goto pos_4;
+  }
+pos_5:
+  if(Serial.available())
+  {
+    Med[4] =Serial.read();
+  }
+  else
+  {
+    goto pos_5;
+  }
+pos_6:
+  if(Serial.available())
+  {
+    Med[5] =Serial.read();
+  }
+  else
+  {
+    goto pos_6;
+  }
+  Serial.print(Med[0]);
+  Serial.println();
+  Serial.print(Med[1]);
+  Serial.println();
+  Serial.print(Med[2]);
+  Serial.println();
+  Serial.print(Med[3]);
+  Serial.println();
+  Serial.print(Med[4]);
+  Serial.println();
+  Serial.print(Med[5]);
+  Serial.println();
   //the following section is operate the motors attached to medicine carrying springs to output required amount of medicine
   while(Med[0] > 0)
   {
-    digitalWrite(2, HIGH);
-    digitalWrite(3, LOW);
+    digitalWrite(2, LOW);
+    digitalWrite(3, HIGH);
     delay(DELAY);
     digitalWrite(2, LOW);
     digitalWrite(3, LOW);
@@ -51,8 +111,8 @@ void loop()
 
   while(Med[1] > 0)
   {
-    digitalWrite(4, HIGH);
-    digitalWrite(5, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, HIGH);
     delay(DELAY);
     digitalWrite(4, LOW);
     digitalWrite(5, LOW);
@@ -71,8 +131,8 @@ void loop()
 
   while(Med[3] > 0)
   {
-    digitalWrite(8, HIGH);
-    digitalWrite(9, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(9, HIGH);
     delay(DELAY);
     digitalWrite(8, LOW);
     digitalWrite(9, LOW);
